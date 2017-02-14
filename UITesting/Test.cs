@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -17,7 +18,7 @@ namespace UITesting
 		{
 			baseURL = "http://booking.com";
 			ChromeOptions options = new ChromeOptions();
-			driver = new ChromeDriver("/Users/mykolak/Downloads/", options);
+			driver = new ChromeDriver(Path.GetFullPath("Drivers"), options);
 			driver.Navigate().GoToUrl(baseURL);
 		}
 		[TearDown]

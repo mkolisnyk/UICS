@@ -42,8 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Drivers\chromedriver" />
-    <None Include="Drivers\chromedriver.exe" />
+    <None Include="Drivers\chromedriver">
+      <IncludeInPackage>false</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Drivers\chromedriver.exe">
+      <IncludeInPackage>false</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Drivers\geckodriver">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Drivers\" />
