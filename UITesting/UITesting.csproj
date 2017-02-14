@@ -36,9 +36,12 @@
     <Reference Include="WebDriver.Support">
       <HintPath>..\packages\Selenium.Support.3.0.1\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.cs" />
+    <Compile Include="Framework\Core\Driver.cs" />
+    <Compile Include="Framework\Core\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -53,9 +56,12 @@
     <None Include="Drivers\geckodriver">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Framework\" />
+    <Folder Include="Framework\Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

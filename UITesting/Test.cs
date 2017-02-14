@@ -3,7 +3,9 @@ using System;
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using UITesting.Framework.Core;
 
 namespace UITesting
 {
@@ -16,9 +18,10 @@ namespace UITesting
 		[SetUp]
 		public void SetUp()
 		{
-			baseURL = "http://booking.com";
-			ChromeOptions options = new ChromeOptions();
-			driver = new ChromeDriver(Path.GetFullPath("Drivers"), options);
+			baseURL = Configuration.Get("BaseURL");
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("Drivers/"), capabilities);
+			driver = Driver.Current();
 			driver.Navigate().GoToUrl(baseURL);
 		}
 		[TearDown]
