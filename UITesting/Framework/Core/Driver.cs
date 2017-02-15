@@ -39,7 +39,6 @@ namespace UITesting.Framework.Core
 			DriverOptions options = (DriverOptions) optionsMap[browser].GetConstructor(new Type[] { }).Invoke(new Object[] { });
 			if (browser == "firefox")
 			{
-				((FirefoxOptions)options).BrowserExecutableLocation = path;
 				driver = new FirefoxDriver((FirefoxOptions)options);
 			}
 			else
