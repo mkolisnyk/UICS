@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using UITesting.Framework.Core;
@@ -27,7 +26,7 @@ namespace UITesting
 		[TearDown]
 		public void TearDown()
 		{
-			driver.Quit();
+			Driver.Quit();
 		}
 		static Object[] SearchData =
 		{
