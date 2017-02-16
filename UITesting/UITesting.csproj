@@ -44,6 +44,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Framework\Core\Configuration.cs" />
+    <Compile Include="Framework\UI\Control.cs" />
+    <Compile Include="Framework\UI\Edit.cs" />
+    <Compile Include="Framework\UI\Select.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +66,7 @@
   <ItemGroup>
     <Folder Include="Framework\" />
     <Folder Include="Framework\Core\" />
+    <Folder Include="Framework\UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
