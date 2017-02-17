@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using UITesting.Framework.Core;
-using UITesting.Framework.UI;
+using UITesting.Framework.UI.Controls;
 
 namespace UITesting
 {

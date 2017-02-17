@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using UITesting.Framework.Core;
 
-namespace UITesting.Framework.UI
+namespace UITesting.Framework.UI.Controls
 {
 	public class Edit : Control
 	{

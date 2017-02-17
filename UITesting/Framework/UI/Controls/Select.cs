@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace UITesting.Framework.UI
+namespace UITesting.Framework.UI.Controls
 {
 	public class SelectList : Control
 	{

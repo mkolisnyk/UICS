@@ -5,7 +5,7 @@ using UITesting.Framework.Core;
 using NUnit.Framework;
 
          
-namespace UITesting.Framework.UI
+namespace UITesting.Framework.UI.Controls
 {
 	public class Control
 	{
