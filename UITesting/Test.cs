@@ -4,6 +4,7 @@ using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using UITesting.Pages;
 using UITesting.Framework.Core;
 using UITesting.Framework.UI.Controls;
 
@@ -14,6 +15,8 @@ namespace UITesting
 	{
 		private IWebDriver driver;
 		private String baseURL;
+		private SearchPage searchPage;
+		private SearchResultsPage searchResultsPage;
 
 		[SetUp]
 		public void SetUp()
@@ -21,8 +24,8 @@ namespace UITesting
 			baseURL = Configuration.Get("BaseURL");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("."), capabilities);
-			driver = Driver.Current();
-			driver.Navigate().GoToUrl(baseURL);
+			searchPage = new SearchPage(Driver.Current());
+			searchPage.Navigate();
 		}
 		[TearDown]
 		public void TearDown()
@@ -37,33 +40,17 @@ namespace UITesting
 		[Test(), TestCaseSource("SearchData")]
 		public void TestValidSearch(String destination, Boolean isLeisure, int adults)
 		{
-			Edit editDestination = new Edit(driver, By.Id("ss"));
-			Control autoCompleteItem = new Control(driver, 
-			                                       By.XPath("(//li[contains(@class, 'autocomplete__item')])[1]"));
-			//Control checkoutDayExpand = new Control(driver,
-            //                            	By.CssSelector("i.sb-date-field__chevron.bicon-downchevron"));
-			Control checkoutDayToday = new Control(driver,
-											By.XPath("//table[@class='c2-month-table']//td[contains(@class, 'c2-day-s-today')]"));
-			Control radioLeisure = new Control(driver, By.XPath("(//input[@name='sb_travel_purpose'])[2]"));
-			Control radioBusiness = new Control(driver, By.XPath("(//input[@name='sb_travel_purpose'])[1]"));
-			SelectList selectAdultsNumber = new SelectList(driver, By.Id("group_adults"));
-			Control buttonSubmit = new Control(driver, By.XPath("//button[@type='submit']"));
-
-			editDestination.Text = destination;
-			autoCompleteItem.Click();
+			searchPage.editDestination.Text = destination;
+			searchPage.autoCompleteItem.Click();
 			//checkoutDayExpand.Click();
-			checkoutDayToday.Click();
-			if (isLeisure)
-			{
-				radioLeisure.Click();
-			}
-			else 
-			{ 
-				radioBusiness.Click();
-			}
-			selectAdultsNumber.Text = "" + adults;
-			buttonSubmit.Click();
-			editDestination.Click();
+			searchPage.checkoutDayToday.Click();
+			searchPage.SelectTravelFor(isLeisure);
+			searchPage.selectAdultsNumber.Text = "" + adults;
+			searchPage.buttonSubmit.Click();
+
+			searchResultsPage = new SearchResultsPage(searchPage.Driver);
+			searchResultsPage.editDestination.Click();
+			Assert.True(searchResultsPage.IsTextPresent(destination));
 		}
 	}
 }

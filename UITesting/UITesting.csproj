@@ -47,6 +47,9 @@
     <Compile Include="Framework\UI\Controls\Control.cs" />
     <Compile Include="Framework\UI\Controls\Edit.cs" />
     <Compile Include="Framework\UI\Controls\Select.cs" />
+    <Compile Include="Framework\UI\Page.cs" />
+    <Compile Include="Pages\SearchPage.cs" />
+    <Compile Include="Pages\SearchResultsPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -68,6 +71,7 @@
     <Folder Include="Framework\Core\" />
     <Folder Include="Framework\UI\" />
     <Folder Include="Framework\UI\Controls\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,7 +24,7 @@ namespace UITesting.Framework.UI.Controls
 				this.Select.SelectByText(value);
 			}
 		}
-		public SelectList(IWebDriver driverValue, By locatorValue) : base(driverValue, locatorValue)
+		public SelectList(Page page, By locatorValue) : base(page, locatorValue)
 		{
 		}
 	}

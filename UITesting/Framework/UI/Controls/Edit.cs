@@ -20,7 +20,7 @@ namespace UITesting.Framework.UI.Controls
 				this.Element.SendKeys(value);
 			}
 		}
-		public Edit(IWebDriver driverValue, By locatorValue) : base(driverValue, locatorValue)
+		public Edit(Page page, By locatorValue) : base(page, locatorValue)
 		{
 		}
 	}

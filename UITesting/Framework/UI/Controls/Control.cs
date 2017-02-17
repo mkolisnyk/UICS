@@ -9,15 +9,22 @@ namespace UITesting.Framework.UI.Controls
 {
 	public class Control
 	{
-		private IWebDriver driver;
+		private Page page;
 		private By locator;
 
-		public IWebDriver Driver
+		public Page Page
 		{ 
 			get 
 			{ 
-				return driver; 
+				return page; 
 			} 
+		}
+		public IWebDriver Driver
+		{
+			get
+			{
+				return page.Driver;
+			}
 		}
 		public By Locator
 		{ 
@@ -41,16 +48,16 @@ namespace UITesting.Framework.UI.Controls
 				return this.Element.Text;
 			}
 		}
-		public Control(IWebDriver driverValue, By locatorValue)
+		public Control(Page driverValue, By locatorValue)
 		{
-			this.driver = driverValue;
+			this.page = driverValue;
 			this.locator = locatorValue;
 		}
 		public bool Exists(int timeout)
 		{
 			try
 			{
-				new WebDriverWait(driver, TimeSpan.FromSeconds(timeout))
+				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
 					.Until(ExpectedConditions.ElementExists(this.Locator));
 			}
 			catch (TimeoutException)
@@ -67,7 +74,7 @@ namespace UITesting.Framework.UI.Controls
 		{
 			try
 			{
-				new WebDriverWait(driver, TimeSpan.FromSeconds(timeout))
+				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
 					.Until(ExpectedConditions.ElementIsVisible(this.Locator));
 			}
 			catch (TimeoutException)
