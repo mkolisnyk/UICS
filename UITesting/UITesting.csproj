@@ -50,6 +50,8 @@
     <Compile Include="Framework\UI\Page.cs" />
     <Compile Include="Pages\SearchPage.cs" />
     <Compile Include="Pages\SearchResultsPage.cs" />
+    <Compile Include="Framework\UI\FindBy.cs" />
+    <Compile Include="Framework\UI\PageFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

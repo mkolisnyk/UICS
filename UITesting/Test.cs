@@ -6,6 +6,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using UITesting.Pages;
 using UITesting.Framework.Core;
+using UITesting.Framework.UI;
 using UITesting.Framework.UI.Controls;
 
 namespace UITesting
@@ -13,8 +14,6 @@ namespace UITesting
 	[TestFixture()]
 	public class Test
 	{
-		private IWebDriver driver;
-		private String baseURL;
 		private SearchPage searchPage;
 		private SearchResultsPage searchResultsPage;
 
@@ -24,7 +23,7 @@ namespace UITesting
 			baseURL = Configuration.Get("BaseURL");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("."), capabilities);
-			searchPage = new SearchPage(Driver.Current());
+			searchPage = PageFactory.Init<SearchPage>();
 			searchPage.Navigate();
 		}
 		[TearDown]
@@ -48,7 +47,7 @@ namespace UITesting
 			searchPage.selectAdultsNumber.Text = "" + adults;
 			searchPage.buttonSubmit.Click();
 
-			searchResultsPage = new SearchResultsPage(searchPage.Driver);
+			searchResultsPage = PageFactory.Init<SearchResultsPage>();
 			searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
 		}
