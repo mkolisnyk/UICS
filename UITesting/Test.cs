@@ -20,7 +20,6 @@ namespace UITesting
 		[SetUp]
 		public void SetUp()
 		{
-			baseURL = Configuration.Get("BaseURL");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("."), capabilities);
 			searchPage = PageFactory.Init<SearchPage>();
@@ -50,6 +49,7 @@ namespace UITesting
 			searchResultsPage = PageFactory.Init<SearchResultsPage>();
 			searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
+			searchResultsPage.CaptureScreenShot(Path.GetFullPath("./image001.png"));
 		}
 	}
 }
