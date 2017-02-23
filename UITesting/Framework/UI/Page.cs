@@ -10,7 +10,6 @@ namespace UITesting.Framework.UI
 	public class Page
 	{
 		private IWebDriver driver;
-		private By locator;
 
 		public IWebDriver Driver
 		{

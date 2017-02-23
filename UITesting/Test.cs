@@ -16,20 +16,20 @@ namespace UITesting
 	{
 		private SearchPage searchPage;
 		private SearchResultsPage searchResultsPage;
-
+		private IWebDriver driver;
 		[SetUp]
 		public void SetUp()
 		{
-			baseURL = Configuration.Get("BaseURL");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("."), capabilities);
-			searchPage = PageFactory.Init<SearchPage>();
+			driver = Driver.Current();
+			searchPage = PageFactory.Init<SearchPage>(driver);
 			searchPage.Navigate();
 		}
 		[TearDown]
 		public void TearDown()
 		{
-			Driver.Quit();
+			driver.Quit();
 		}
 		static Object[] SearchData =
 		{
@@ -41,13 +41,12 @@ namespace UITesting
 		{
 			searchPage.editDestination.Text = destination;
 			searchPage.autoCompleteItem.Click();
-			//checkoutDayExpand.Click();
 			searchPage.checkoutDayToday.Click();
 			searchPage.SelectTravelFor(isLeisure);
 			searchPage.selectAdultsNumber.Text = "" + adults;
 			searchPage.buttonSubmit.Click();
 
-			searchResultsPage = PageFactory.Init<SearchResultsPage>();
+			searchResultsPage = PageFactory.Init<SearchResultsPage>(driver);
 			searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
 		}

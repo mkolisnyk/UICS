@@ -8,28 +8,23 @@ namespace UITesting.Pages
 {
 	public class SearchPage : Page
 	{
+		[FindBy("ss")]
 		public Edit editDestination;
+		[FindBy("xpath=(//li[contains(@class, 'autocomplete__item')])[1]")]
 		public Control autoCompleteItem;
+		[FindBy("xpath=//table[@class='c2-month-table']//td[contains(@class, 'c2-day-s-today')]")]
 		public Control checkoutDayToday;
+		[FindBy("xpath=(//input[@name='sb_travel_purpose'])[2]")]
 		public Control radioLeisure;
+		[FindBy("xpath=(//input[@name='sb_travel_purpose'])[1]")]
 		public Control radioBusiness;
+		[FindBy("group_adults")]
 		public SelectList selectAdultsNumber;
+		[FindBy("xpath=//button[@type='submit']")]
 		public Control buttonSubmit;
 
 		public SearchPage(IWebDriver driver) : base(driver)
 		{
-			editDestination = new Edit(this, By.Id("ss"));
-			autoCompleteItem = new Control(this,
-												   By.XPath("(//li[contains(@class, 'autocomplete__item')])[1]"));
-			//Control checkoutDayExpand = new Control(driver,
-			//                            	By.CssSelector("i.sb-date-field__chevron.bicon-downchevron"));
-			checkoutDayToday = new Control(this,
-											By.XPath("//table[@class='c2-month-table']//td[contains(@class, 'c2-day-s-today')]"));
-			radioLeisure = new Control(this, By.XPath("(//input[@name='sb_travel_purpose'])[2]"));
-			radioBusiness = new Control(this, By.XPath("(//input[@name='sb_travel_purpose'])[1]"));
-			selectAdultsNumber = new SelectList(this, By.Id("group_adults"));
-			buttonSubmit = new Control(this, By.XPath("//button[@type='submit']"));
-
 		}
 
 		public new Page Navigate()
