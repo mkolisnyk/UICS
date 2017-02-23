@@ -60,7 +60,7 @@ namespace UITesting.Framework.UI.Controls
 				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
 					.Until(ExpectedConditions.ElementExists(this.Locator));
 			}
-			catch (TimeoutException)
+			catch (WebDriverTimeoutException)
 			{
 				return false;
 			}
@@ -77,7 +77,7 @@ namespace UITesting.Framework.UI.Controls
 				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
 					.Until(ExpectedConditions.ElementIsVisible(this.Locator));
 			}
-			catch (TimeoutException)
+			catch (WebDriverTimeoutException)
 			{
 				return false;
 			}

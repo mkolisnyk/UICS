@@ -17,7 +17,7 @@ namespace UITesting.Framework.UI
 		{
 			if (Regex.IsMatch(input, "^(xpath=|/)(.*)"))
 			{
-				return By.XPath(input.Replace("^xpath=", ""));
+				return By.XPath(new Regex("^xpath=").Replace(input, ""));
 			}
 			else if (Regex.IsMatch(input, "^id=(.*)"))
 			{
@@ -41,9 +41,8 @@ namespace UITesting.Framework.UI
 			}
 		}
 
-		public static T Init<T>()
+		public static T Init<T>(IWebDriver driver)
 		{
-			IWebDriver driver = Driver.Current();
 			T page = (T) typeof(T).GetConstructor(new Type[] { typeof(IWebDriver) })
 								  .Invoke(new Object[] { driver });
 			foreach (FieldInfo field in typeof(T).GetFields())
@@ -51,7 +50,7 @@ namespace UITesting.Framework.UI
 				FindBy locator = (FindBy) field.GetCustomAttribute(typeof(FindBy));
 				if (locator != null)
 				{
-					Control control = (Control) field.GetType()
+					Control control = (Control) field.FieldType
 										 .GetConstructor(new Type[] { typeof(Page), typeof(By) })
 										 .Invoke(new Object[] { page, toLocator(locator.Locator) });
 					field.SetValue(page, control);

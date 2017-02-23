@@ -52,6 +52,10 @@ namespace UITesting.Framework.Core
 				driver = (IWebDriver)driverType.GetConstructor(new Type[] { typeof(String), optionsMap[browser] }).Invoke(new Object[] { path, options });
 			}
 			String threadName = _getThreadName();
+			if (driverThreadMap.ContainsKey(threadName))
+			{
+				driverThreadMap.Remove(threadName);
+			}
 			driverThreadMap.Add(threadName, driver);
 		}
 		public static IWebDriver Current()
