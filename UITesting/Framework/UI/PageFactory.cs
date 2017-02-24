@@ -40,20 +40,43 @@ namespace UITesting.Framework.UI
 				return By.Id(input);
 			}
 		}
-
-		public static T Init<T>(IWebDriver driver)
+		private static FindBy getLocatorForPlatform(FindBy[] locators, TargetPlatform platform)
 		{
+			foreach (FindBy locator in locators)
+			{
+				if (locator.Platform.Equals(platform))
+				{
+					return locator;
+				}
+			}
+			return null;
+		}
+		public static T Init<T>()
+		{
+			IWebDriver driver = Driver.Current();
 			T page = (T) typeof(T).GetConstructor(new Type[] { typeof(IWebDriver) })
 								  .Invoke(new Object[] { driver });
 			foreach (FieldInfo field in typeof(T).GetFields())
 			{
-				FindBy locator = (FindBy) field.GetCustomAttribute(typeof(FindBy));
-				if (locator != null)
+				FindBy[] locators = (FindBy[]) field.GetCustomAttributes(typeof(FindBy));
+				if (locators != null && locators.Length > 0)
 				{
-					Control control = (Control) field.FieldType
+					FindBy locator = getLocatorForPlatform(locators, Configuration.Platform);
+					if (locator == null)
+					{ 
+						locator = getLocatorForPlatform(locators, TargetPlatform.ANY_WEB);
+					}
+					if (locator == null)
+					{
+						locator = getLocatorForPlatform(locators, TargetPlatform.ANY);
+					}
+					if (locator != null)
+					{ 
+						Control control = (Control)field.FieldType
 										 .GetConstructor(new Type[] { typeof(Page), typeof(By) })
 										 .Invoke(new Object[] { page, toLocator(locator.Locator) });
-					field.SetValue(page, control);
+						field.SetValue(page, control);
+					}
 				}
 			}
 			return page;

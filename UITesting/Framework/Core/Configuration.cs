@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using UITesting.Framework.UI;
+
 namespace UITesting.Framework.Core
 {
 	public class Configuration
@@ -10,7 +13,26 @@ namespace UITesting.Framework.Core
 		{ 
 			get
 			{
-				return Int32.Parse(Get("timeout"));
+				return Int32.Parse(Get("Timeout"));
+			}
+		}
+		public static TargetPlatform Platform
+		{ 
+			get
+			{
+				return TargetPlatformMethods.Value(Get("Browser"));
+			}
+		}
+		public static String DriverPath
+		{ 
+			get
+			{
+				String path = Get("DriverPath");
+				if (!path.StartsWith("http:"))
+				{
+					return Path.GetFullPath(path);
+				}
+				return path;
 			}
 		}
 		public static String Get(String option)
