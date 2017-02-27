@@ -8,18 +8,31 @@ namespace UITesting.Pages
 {
 	public class SearchPage : Page
 	{
+		[FindBy("search_searchInput", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("ss", Platform = TargetPlatform.ANY_WEB)]
         public Edit editDestination;
+
+		[FindBy("", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=(//li[contains(@class, 'autocomplete__item')])[1]", Platform = TargetPlatform.ANY_WEB)]
 		public Control autoCompleteItem;
+
+		[FindBy("", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=//table[@class='c2-month-table']//td[contains(@class, 'c2-day-s-today')]", Platform = TargetPlatform.ANY_WEB)]
 		public Control checkoutDayToday;
+
+		[FindBy("business_purpose_leisure", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=(//input[@name='sb_travel_purpose'])[2]", Platform = TargetPlatform.ANY_WEB)]
 		public Control radioLeisure;
+
+		[FindBy("business_purpose_business", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=(//input[@name='sb_travel_purpose'])[1]", Platform = TargetPlatform.ANY_WEB)]
 		public Control radioBusiness;
+
+		[FindBy("adult_count", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("group_adults", Platform = TargetPlatform.ANY_WEB)]
 		public SelectList selectAdultsNumber;
+
+		[FindBy("search_search", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=//button[@type='submit']", Platform = TargetPlatform.ANY_WEB)]
 		public Control buttonSubmit;
 
