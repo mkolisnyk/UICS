@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using UITesting.Framework.Core;
 using UITesting.Framework.UI;
 using UITesting.Framework.UI.Controls;
+using UITesting.Pages.Controls;
 
 namespace UITesting.Pages
 {
@@ -10,13 +11,13 @@ namespace UITesting.Pages
 	{
 		[FindBy("search_searchInput", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("ss", Platform = TargetPlatform.ANY_WEB)]
-        public Edit editDestination;
+        public LocationLookupEdit editDestination;
 
 		[FindBy("", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=(//li[contains(@class, 'autocomplete__item')])[1]", Platform = TargetPlatform.ANY_WEB)]
 		public Control autoCompleteItem;
 
-		[FindBy("", Platform = TargetPlatform.ANDROID_NATIVE)]
+		[FindBy("xpath=(//android.widget.TextView[contains(@resource-id, 'calendar_tv') and @enabled='true'])[1]", Platform = TargetPlatform.ANDROID_NATIVE)]
 		[FindBy("xpath=//table[@class='c2-month-table']//td[contains(@class, 'c2-day-s-today')]", Platform = TargetPlatform.ANY_WEB)]
 		public Control checkoutDayToday;
 

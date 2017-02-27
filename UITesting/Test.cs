@@ -39,14 +39,13 @@ namespace UITesting
 		public void TestValidSearch(String destination, Boolean isLeisure, int adults)
 		{
 			searchPage.editDestination.Text = destination;
-			searchPage.autoCompleteItem.Click();
 			searchPage.checkoutDayToday.Click();
 			searchPage.SelectTravelFor(isLeisure);
-			searchPage.selectAdultsNumber.Text = "" + adults;
+			//searchPage.selectAdultsNumber.Text = "" + adults;
 			searchPage.buttonSubmit.Click();
 
 			searchResultsPage = PageFactory.Init<SearchResultsPage>();
-			searchResultsPage.editDestination.Click();
+			//searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
 			searchResultsPage.CaptureScreenShot(Path.GetFullPath("./image001.png"));
 		}

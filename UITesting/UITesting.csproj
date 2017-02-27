@@ -62,6 +62,8 @@
     <Compile Include="Framework\UI\FindBy.cs" />
     <Compile Include="Framework\UI\PageFactory.cs" />
     <Compile Include="Framework\UI\TargetPlatform.cs" />
+    <Compile Include="Pages\Controls\LocationLookupEdit.cs" />
+    <Compile Include="Pages\Android\LocationSearchPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,6 +86,8 @@
     <Folder Include="Framework\UI\" />
     <Folder Include="Framework\UI\Controls\" />
     <Folder Include="Pages\" />
+    <Folder Include="Pages\Controls\" />
+    <Folder Include="Pages\Android\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
