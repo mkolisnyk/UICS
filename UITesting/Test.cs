@@ -21,15 +21,14 @@ namespace UITesting
 		public void SetUp()
 		{
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			Driver.Add(Configuration.Get("Browser"), Path.GetFullPath("."), capabilities);
-			driver = Driver.Current();
-			searchPage = PageFactory.Init<SearchPage>(driver);
+			Driver.Add(Configuration.Platform, Configuration.DriverPath, capabilities);
+			searchPage = PageFactory.Init<SearchPage>();
 			searchPage.Navigate();
 		}
 		[TearDown]
 		public void TearDown()
 		{
-			driver.Quit();
+			Driver.Quit();
 		}
 		static Object[] SearchData =
 		{
@@ -40,16 +39,24 @@ namespace UITesting
 		public void TestValidSearch(String destination, Boolean isLeisure, int adults)
 		{
 			searchPage.editDestination.Text = destination;
-			searchPage.autoCompleteItem.Click();
 			searchPage.checkoutDayToday.Click();
 			searchPage.SelectTravelFor(isLeisure);
-			searchPage.selectAdultsNumber.Text = "" + adults;
+			//searchPage.selectAdultsNumber.Text = "" + adults;
 			searchPage.buttonSubmit.Click();
 
-			searchResultsPage = PageFactory.Init<SearchResultsPage>(driver);
-			searchResultsPage.editDestination.Click();
+			searchResultsPage = PageFactory.Init<SearchResultsPage>();
+			//searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
 			searchResultsPage.CaptureScreenShot(Path.GetFullPath("./image001.png"));
+		}
+		[Test()]
+		public void TestVerifyUIOnSearchPage()
+		{ 
+			Assert.True(searchPage.editDestination.Exists());
+			Assert.True(searchPage.radioBusiness.Exists());
+			Assert.True(searchPage.radioLeisure.Exists());
+			Assert.True(searchPage.selectAdultsNumber.Exists());
+			Assert.True(searchPage.buttonSubmit.Exists());
 		}
 	}
 }

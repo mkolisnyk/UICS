@@ -37,6 +37,15 @@
       <HintPath>..\packages\Selenium.Support.3.0.1\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="appium-dotnet-driver">
+      <HintPath>..\packages\Appium.WebDriver.3.0.0.2\lib\net45\appium-dotnet-driver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.cs" />
@@ -52,6 +61,9 @@
     <Compile Include="Pages\SearchResultsPage.cs" />
     <Compile Include="Framework\UI\FindBy.cs" />
     <Compile Include="Framework\UI\PageFactory.cs" />
+    <Compile Include="Framework\UI\TargetPlatform.cs" />
+    <Compile Include="Pages\Controls\LocationLookupEdit.cs" />
+    <Compile Include="Pages\Android\LocationSearchPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -74,6 +86,8 @@
     <Folder Include="Framework\UI\" />
     <Folder Include="Framework\UI\Controls\" />
     <Folder Include="Pages\" />
+    <Folder Include="Pages\Controls\" />
+    <Folder Include="Pages\Android\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
