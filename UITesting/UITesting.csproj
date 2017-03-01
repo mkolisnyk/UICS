@@ -64,6 +64,11 @@
     <Compile Include="Framework\UI\TargetPlatform.cs" />
     <Compile Include="Pages\Controls\LocationLookupEdit.cs" />
     <Compile Include="Pages\Android\LocationSearchPage.cs" />
+    <Compile Include="Pages\Banking\AddCustomerPage.cs" />
+    <Compile Include="Pages\Banking\BankManagerCommonPage.cs" />
+    <Compile Include="Pages\Banking\CustomersPage.cs" />
+    <Compile Include="Pages\Banking\HomePage.cs" />
+    <Compile Include="TestBanking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -88,6 +93,7 @@
     <Folder Include="Pages\" />
     <Folder Include="Pages\Controls\" />
     <Folder Include="Pages\Android\" />
+    <Folder Include="Pages\Banking\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
