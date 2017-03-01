@@ -69,6 +69,8 @@
     <Compile Include="Pages\Banking\CustomersPage.cs" />
     <Compile Include="Pages\Banking\HomePage.cs" />
     <Compile Include="TestBanking.cs" />
+    <Compile Include="Framework\UI\Controls\TableView.cs" />
+    <Compile Include="Framework\UI\SubItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

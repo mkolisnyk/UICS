@@ -6,6 +6,7 @@ namespace UITesting.Framework.UI
 	{
 		private readonly String locator;
 		private TargetPlatform platform = TargetPlatform.ANY;
+		private String itemLocator;
 		public String Locator
 		{ 
 			get
@@ -22,6 +23,17 @@ namespace UITesting.Framework.UI
 			set
 			{
 				platform = value;
+			}
+		}
+		public String ItemLocator
+		{
+			get
+			{
+				return itemLocator;
+			}
+			set
+			{
+				itemLocator = value;
 			}
 		}
 		public FindBy(String locatorString)

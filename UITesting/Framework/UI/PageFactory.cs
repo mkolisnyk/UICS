@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
@@ -75,6 +77,17 @@ namespace UITesting.Framework.UI
 						Control control = (Control)field.FieldType
 										 .GetConstructor(new Type[] { typeof(Page), typeof(By) })
 										 .Invoke(new Object[] { page, toLocator(locator.Locator) });
+						control.ItemLocator = locator.ItemLocator;
+						SubItem[] items = (SubItem[])field.GetCustomAttributes(typeof(SubItem));
+						if (items != null && items.Length > 0)
+						{
+							control.SubItems = items.Where<SubItem>(t =>
+								   (
+									  t.Platform.Equals(Configuration.Platform))
+								   || t.Platform.Equals(TargetPlatform.ANY)
+								   || t.Platform.Equals(TargetPlatform.ANY_WEB) && Configuration.Platform.IsWeb())
+							.ToArray<SubItem>();
+						}
 						field.SetValue(page, control);
 					}
 				}

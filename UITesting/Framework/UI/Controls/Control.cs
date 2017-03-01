@@ -33,6 +33,14 @@ namespace UITesting.Framework.UI.Controls
 				return locator;
 			}
 		}
+		public String ItemLocator
+		{
+			get; set;
+		}
+		public SubItem[] SubItems
+		{
+			get; set;
+		}
 		public IWebElement Element
 		{ 
 			get
@@ -48,9 +56,9 @@ namespace UITesting.Framework.UI.Controls
 				return this.Element.Text;
 			}
 		}
-		public Control(Page driverValue, By locatorValue)
+		public Control(Page pageValue, By locatorValue)
 		{
-			this.page = driverValue;
+			this.page = pageValue;
 			this.locator = locatorValue;
 		}
 		public bool Exists(int timeout)
