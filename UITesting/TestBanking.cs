@@ -54,14 +54,14 @@ namespace UITesting
 			addCustomer.buttonCustomers.Click();
 
 	        customers = PageFactory.Init<CustomersPage>();
-			Assert.Equals(rows + 1, customers.tableCustomers.ItemsCount);
-			Assert.Equals("Test", customers.tableCustomers["First Name", rows].Text);
-			Assert.Equals("User", customers.tableCustomers["Last Name", rows].Text);
-			Assert.Equals("WWW99", customers.tableCustomers["Post Code", rows].Text);
+			Assert.AreEqual(rows + 1, customers.tableCustomers.ItemsCount);
+			Assert.AreEqual("Test", customers.tableCustomers["First Name", rows].Text);
+			Assert.AreEqual("User", customers.tableCustomers["Last Name", rows].Text);
+			Assert.AreEqual("WWW99", customers.tableCustomers["Post Code", rows].Text);
 
 			customers.tableCustomers["Delete Customer", rows].Click();
 			Assert.True(customers.tableCustomers.IsNotEmpty());
-			Assert.Equals(rows, customers.tableCustomers.ItemsCount);
+			Assert.AreEqual(rows, customers.tableCustomers.ItemsCount);
 		}
 	}
 }

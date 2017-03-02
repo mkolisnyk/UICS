@@ -12,7 +12,7 @@ namespace UITesting.Framework.UI.Controls
 		{
 			get
 			{
-				return String.Format("{0}{1}", this.Locator.ToString().Substring("(By.XPath: ".Length), this.ItemLocator);
+				return String.Format("{0}{1}", this.Locator.ToString().Substring("(By.XPath:".Length), this.ItemLocator);
 			}
 		}
 		public int ItemsCount
