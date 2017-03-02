@@ -66,39 +66,65 @@ namespace UITesting.Framework.UI.Controls
 			this.locator = locatorValue;
 			this.ExcludeFromSearch = false;
 		}
-		public bool Exists(int timeout)
+		public bool WaitUntil<T>(Func<IWebDriver, T> condition, int timeout)
 		{
 			try
 			{
 				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
-					.Until(ExpectedConditions.ElementExists(this.Locator));
+					.Until(condition);
 			}
 			catch (WebDriverTimeoutException)
 			{
 				return false;
 			}
 			return true;
+		}
+		public bool Exists(int timeout)
+		{
+			return WaitUntil(ExpectedConditions.ElementExists(this.Locator), timeout);
 		}
 		public bool Exists()
 		{ 
 			return Exists(Configuration.Timeout);
 		}
+		public bool Clickable(int timeout)
+		{
+			return WaitUntil(ExpectedConditions.ElementToBeClickable(this.Locator), timeout);
+		}
+		public bool Clickable()
+		{
+			return Clickable(Configuration.Timeout);
+		}
+
 		public bool Visible(int timeout)
 		{
-			try
-			{
-				new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeout))
-					.Until(ExpectedConditions.ElementIsVisible(this.Locator));
-			}
-			catch (WebDriverTimeoutException)
-			{
-				return false;
-			}
-			return true;
+			return WaitUntil(ExpectedConditions.ElementIsVisible(this.Locator), timeout);
 		}
 		public bool Visible()
 		{
 			return Visible(Configuration.Timeout);
+		}
+		public bool Invisible(int timeout)
+		{
+			return WaitUntil(ExpectedConditions.InvisibilityOfElementLocated(this.Locator), timeout);
+		}
+		public bool Invisible()
+		{
+			return Invisible(Configuration.Timeout);
+		}
+		public bool Enabled(int timeout)
+		{
+			return WaitUntil<bool>(c =>
+			{
+				return this.Element.Enabled;
+			}, timeout);
+		}
+		public bool Disabled(int timeout)
+		{
+			return WaitUntil<bool>(c =>
+			{
+				return !this.Element.Enabled;
+			}, timeout);
 		}
 		public void Click()
 		{
