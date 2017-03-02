@@ -88,6 +88,7 @@ namespace UITesting.Framework.UI
 								   || t.Platform.Equals(TargetPlatform.ANY_WEB) && Configuration.Platform.IsWeb())
 							.ToArray<SubItem>();
 						}
+						control.ExcludeFromSearch = locator.ExcludeFromSearch;
 						field.SetValue(page, control);
 					}
 				}

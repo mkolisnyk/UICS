@@ -35,26 +35,21 @@ namespace UITesting
 		[Test()]
 		public void TestAddNewCustomer()
 		{ 
-	        home.buttonBankManagerLogin.Click();
-	        bankManagerMenu = PageFactory.Init<BankManagerCommonPage>();
-	        bankManagerMenu.buttonCustomers.Click();
-	        
-	        customers = PageFactory.Init<CustomersPage>();
-			Assert.True(customers.tableCustomers.IsNotEmpty());
+			bankManagerMenu = home.buttonBankManagerLogin.ClickAndWaitFor<BankManagerCommonPage>();
+			customers = bankManagerMenu.buttonCustomers.ClickAndWaitFor<CustomersPage>();
+	        Assert.True(customers.tableCustomers.IsNotEmpty());
 			int rows = customers.tableCustomers.ItemsCount;
-	        customers.buttonAddCustomer.Click();
+	        addCustomer = customers.buttonAddCustomer.ClickAndWaitFor<AddCustomerPage>();
 	        
-	        addCustomer = PageFactory.Init<AddCustomerPage>();
-			System.Threading.Thread.Sleep(1000);
+	        System.Threading.Thread.Sleep(1000);
 	        addCustomer.editFirstName.Text = "Test";
 	        addCustomer.editLastName.Text = "User";
 	        addCustomer.editPostCode.Text = "WWW99";
 	        addCustomer.buttonSubmit.Click();
 	        addCustomer.Driver.SwitchTo().Alert().Accept();
-			addCustomer.buttonCustomers.Click();
+			customers = addCustomer.buttonCustomers.ClickAndWaitFor<CustomersPage>();
 
-	        customers = PageFactory.Init<CustomersPage>();
-			Assert.AreEqual(rows + 1, customers.tableCustomers.ItemsCount);
+	        Assert.AreEqual(rows + 1, customers.tableCustomers.ItemsCount);
 			Assert.AreEqual("Test", customers.tableCustomers["First Name", rows].Text);
 			Assert.AreEqual("User", customers.tableCustomers["Last Name", rows].Text);
 			Assert.AreEqual("WWW99", customers.tableCustomers["Post Code", rows].Text);
