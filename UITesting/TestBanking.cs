@@ -34,22 +34,37 @@ namespace UITesting
 		}
 		[Test()]
 		public void TestAddNewCustomer()
-		{ 
+		{
 			bankManagerMenu = home.buttonBankManagerLogin.ClickAndWaitFor<BankManagerCommonPage>();
 			customers = bankManagerMenu.buttonCustomers.ClickAndWaitFor<CustomersPage>();
-	        Assert.True(customers.tableCustomers.IsNotEmpty());
+			Assert.True(customers.tableCustomers.IsNotEmpty());
 			int rows = customers.tableCustomers.ItemsCount;
-	        addCustomer = customers.buttonAddCustomer.ClickAndWaitFor<AddCustomerPage>();
-	        
-	        System.Threading.Thread.Sleep(1000);
-	        addCustomer.editFirstName.Text = "Test";
-	        addCustomer.editLastName.Text = "User";
-	        addCustomer.editPostCode.Text = "WWW99";
-	        addCustomer.buttonSubmit.Click();
-	        addCustomer.Driver.SwitchTo().Alert().Accept();
+			addCustomer = customers.buttonAddCustomer.ClickAndWaitFor<AddCustomerPage>();
+
+			Assert.True(addCustomer.AllElementsExist(
+				new Control[] 
+				{
+					addCustomer.editFirstName,
+					addCustomer.editLastName,
+					addCustomer.editPostCode,
+					addCustomer.buttonSubmit
+				})
+            );
+			Assert.True(addCustomer.AnyOfElementsExist(new Control[] {
+				addCustomer.editFirstName,
+				addCustomer.editLastName,
+				addCustomer.editPostCode,
+				addCustomer.buttonSubmit
+			}));
+			System.Threading.Thread.Sleep(1000);
+			addCustomer.editFirstName.Text = "Test";
+			addCustomer.editLastName.Text = "User";
+			addCustomer.editPostCode.Text = "WWW99";
+			addCustomer.buttonSubmit.Click();
+			addCustomer.Driver.SwitchTo().Alert().Accept();
 			customers = addCustomer.buttonCustomers.ClickAndWaitFor<CustomersPage>();
 
-	        Assert.AreEqual(rows + 1, customers.tableCustomers.ItemsCount);
+			Assert.AreEqual(rows + 1, customers.tableCustomers.ItemsCount);
 			Assert.AreEqual("Test", customers.tableCustomers["First Name", rows].Text);
 			Assert.AreEqual("User", customers.tableCustomers["Last Name", rows].Text);
 			Assert.AreEqual("WWW99", customers.tableCustomers["Post Code", rows].Text);

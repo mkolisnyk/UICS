@@ -119,12 +119,20 @@ namespace UITesting.Framework.UI.Controls
 				return this.Element.Enabled;
 			}, timeout);
 		}
+		public bool Enabled()
+		{
+			return Enabled(Configuration.Timeout);
+		}
 		public bool Disabled(int timeout)
 		{
 			return WaitUntil<bool>(c =>
 			{
 				return !this.Element.Enabled;
 			}, timeout);
+		}
+		public bool Disabled()
+		{
+			return Disabled(Configuration.Timeout);
 		}
 		public void Click()
 		{
