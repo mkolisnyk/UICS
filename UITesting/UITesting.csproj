@@ -76,6 +76,7 @@
     <Compile Include="Framework\ODT\ODTTestStep.cs" />
     <Compile Include="Framework\ODT\ODTTestCase.cs" />
     <Compile Include="Framework\ODT\ODTTestSuite.cs" />
+    <Compile Include="Framework\Core\Context.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
