@@ -71,6 +71,11 @@
     <Compile Include="TestBanking.cs" />
     <Compile Include="Framework\UI\Controls\TableView.cs" />
     <Compile Include="Framework\UI\SubItem.cs" />
+    <Compile Include="Framework\ODT\ODTRunner.cs" />
+    <Compile Include="Framework\ODT\ODTContainerRunner.cs" />
+    <Compile Include="Framework\ODT\ODTTestStep.cs" />
+    <Compile Include="Framework\ODT\ODTTestCase.cs" />
+    <Compile Include="Framework\ODT\ODTTestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -96,6 +101,7 @@
     <Folder Include="Pages\Controls\" />
     <Folder Include="Pages\Android\" />
     <Folder Include="Pages\Banking\" />
+    <Folder Include="Framework\ODT\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
