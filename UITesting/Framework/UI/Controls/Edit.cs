@@ -11,7 +11,7 @@ namespace UITesting.Framework.UI.Controls
 		{ 
 			get
 			{
-				return base.Text;
+				return base.Element.GetAttribute("value");
 			}
 			set
 			{
