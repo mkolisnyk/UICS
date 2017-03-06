@@ -19,7 +19,7 @@ namespace UITesting.Framework.ODT
 		public void AfterRun()
 		{
 		}
-		public void OnError(Exception e)
+		public virtual void OnError(Exception e)
 		{
 		}
 	}

@@ -77,6 +77,8 @@
     <Compile Include="Framework\ODT\ODTTestCase.cs" />
     <Compile Include="Framework\ODT\ODTTestSuite.cs" />
     <Compile Include="Framework\Core\Context.cs" />
+    <Compile Include="ODTSteps\ODTBankingSteps.cs" />
+    <Compile Include="ODTTestBanking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -103,6 +105,7 @@
     <Folder Include="Pages\Android\" />
     <Folder Include="Pages\Banking\" />
     <Folder Include="Framework\ODT\" />
+    <Folder Include="ODTSteps\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

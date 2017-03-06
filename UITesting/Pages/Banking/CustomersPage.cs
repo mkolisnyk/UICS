@@ -18,5 +18,9 @@ namespace UITesting.Pages.Banking
 		public CustomersPage(IWebDriver driver) : base(driver)
 		{
 		}
+		public new virtual Page Navigate()
+		{
+			return this.buttonCustomers.ClickAndWaitFor<CustomersPage>();
+		}
 	}
 }

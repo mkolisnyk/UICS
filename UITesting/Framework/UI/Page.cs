@@ -23,7 +23,7 @@ namespace UITesting.Framework.UI
 		{
 			driver = driverValue;
 		}
-		public Page Navigate()
+		public virtual Page Navigate()
 		{
 			return this;
 		}
