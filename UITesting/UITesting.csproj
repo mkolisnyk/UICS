@@ -64,6 +64,21 @@
     <Compile Include="Framework\UI\TargetPlatform.cs" />
     <Compile Include="Pages\Controls\LocationLookupEdit.cs" />
     <Compile Include="Pages\Android\LocationSearchPage.cs" />
+    <Compile Include="Pages\Banking\AddCustomerPage.cs" />
+    <Compile Include="Pages\Banking\BankManagerCommonPage.cs" />
+    <Compile Include="Pages\Banking\CustomersPage.cs" />
+    <Compile Include="Pages\Banking\HomePage.cs" />
+    <Compile Include="TestBanking.cs" />
+    <Compile Include="Framework\UI\Controls\TableView.cs" />
+    <Compile Include="Framework\UI\SubItem.cs" />
+    <Compile Include="Framework\ODT\ODTRunner.cs" />
+    <Compile Include="Framework\ODT\ODTContainerRunner.cs" />
+    <Compile Include="Framework\ODT\ODTTestStep.cs" />
+    <Compile Include="Framework\ODT\ODTTestCase.cs" />
+    <Compile Include="Framework\ODT\ODTTestSuite.cs" />
+    <Compile Include="Framework\Core\Context.cs" />
+    <Compile Include="ODTSteps\ODTBankingSteps.cs" />
+    <Compile Include="ODTTestBanking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -88,6 +103,9 @@
     <Folder Include="Pages\" />
     <Folder Include="Pages\Controls\" />
     <Folder Include="Pages\Android\" />
+    <Folder Include="Pages\Banking\" />
+    <Folder Include="Framework\ODT\" />
+    <Folder Include="ODTSteps\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

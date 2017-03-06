@@ -40,7 +40,7 @@ namespace UITesting.Framework.Core
 		{
 		}
 
-		private static String _getThreadName()
+		public static String GetThreadName()
 		{
 			return Thread.CurrentThread.Name + Thread.CurrentThread.ManagedThreadId;
 		}
@@ -70,7 +70,7 @@ namespace UITesting.Framework.Core
 				driver = (IWebDriver)driverType.GetConstructor(new Type[] { typeof(Uri), typeof(DesiredCapabilities) })
 											   .Invoke(new Object[] { new Uri(path), capabilities });
 			}
-			String threadName = _getThreadName();
+			String threadName = GetThreadName();
 			if (driverThreadMap.ContainsKey(threadName))
 			{
 				driverThreadMap.Remove(threadName);
@@ -79,12 +79,12 @@ namespace UITesting.Framework.Core
 		}
 		public static IWebDriver Current()
 		{
-			String threadName = _getThreadName();
+			String threadName = GetThreadName();
 			return driverThreadMap[threadName];
 		}
 		public static void Quit()
 		{
-			String threadName = _getThreadName();
+			String threadName = GetThreadName();
 			Current().Quit();
 			driverThreadMap.Remove(threadName);
 		}
