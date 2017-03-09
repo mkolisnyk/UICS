@@ -47,7 +47,7 @@ namespace UITesting
 			searchResultsPage = PageFactory.Init<SearchResultsPage>();
 			//searchResultsPage.editDestination.Click();
 			Assert.True(searchResultsPage.IsTextPresent(destination));
-			searchResultsPage.CaptureScreenShot(Path.GetFullPath("./image001.png"));
+			//searchResultsPage.CaptureScreenShot(Path.GetFullPath("./image001.png"));
 		}
 		[Test()]
 		public void TestVerifyUIOnSearchPage()

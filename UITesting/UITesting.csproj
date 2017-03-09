@@ -26,9 +26,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
     </Reference>
@@ -45,6 +42,12 @@
     </Reference>
     <Reference Include="appium-dotnet-driver">
       <HintPath>..\packages\Appium.WebDriver.3.0.0.2\lib\net45\appium-dotnet-driver.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +82,10 @@
     <Compile Include="Framework\Core\Context.cs" />
     <Compile Include="ODTSteps\ODTBankingSteps.cs" />
     <Compile Include="ODTTestBanking.cs" />
+    <Compile Include="Features\BankManager.feature.cs">
+      <DependentUpon>BankManager.feature</DependentUpon>
+    </Compile>
+    <Compile Include="KDTSteps\BasicKDTSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -94,6 +101,10 @@
     <None Include="geckodriver">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Features\BankManager.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>BankManager.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Framework\" />
@@ -106,6 +117,8 @@
     <Folder Include="Pages\Banking\" />
     <Folder Include="Framework\ODT\" />
     <Folder Include="ODTSteps\" />
+    <Folder Include="Features\" />
+    <Folder Include="KDTSteps\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
