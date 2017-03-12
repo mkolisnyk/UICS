@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -22,6 +23,14 @@ namespace UITesting.Framework.UI
 		public Page(IWebDriver driverValue)
 		{
 			driver = driverValue;
+		}
+		public static Page Screen(String name)
+		{
+			Type[] types = Assembly.GetExecutingAssembly().GetTypes();
+			Type pageType = types.Where<Type>(t => (typeof(Page).IsAssignableFrom(t)
+			                                        && t.GetCustomAttribute<AliasAttribute>() != null
+			                                        && t.GetCustomAttribute<AliasAttribute>().Name.Equals("name"))).First<Type>();
+			return null;//PageFactory.Init<pageType>();
 		}
 		public virtual Page Navigate()
 		{

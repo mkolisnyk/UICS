@@ -30,7 +30,8 @@ namespace UITesting.Framework.Core
 				String path = Get("DriverPath");
 				if (!path.StartsWith("http:"))
 				{
-					return Path.GetFullPath(path);
+					String newPath = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
+					return Path.GetFullPath(newPath);
 				}
 				return path;
 			}

@@ -5,8 +5,10 @@ using UITesting.Framework.UI.Controls;
 
 namespace UITesting.Pages.Banking
 {
+	[Alias("Customers")]
 	public class CustomersPage : BankManagerCommonPage
 	{
+		[Alias("Customer List")]
 		[FindBy("//table", ItemLocator = "/tbody/tr")]
 		[SubItem("First Name", "/td[1]")]
 		[SubItem("Last Name", "/td[2]")]

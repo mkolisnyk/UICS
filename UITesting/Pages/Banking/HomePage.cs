@@ -5,8 +5,10 @@ using UITesting.Framework.UI;
 using UITesting.Framework.UI.Controls;
 namespace UITesting.Pages.Banking
 {
+	[Alias("Banking Home")]
 	public class HomePage : Page
 	{
+		[Alias("Banking Manager Login")]
 		[FindBy("//button[text() = 'Bank Manager Login']")]
 		public Control buttonBankManagerLogin;
 	

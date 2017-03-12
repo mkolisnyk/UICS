@@ -86,6 +86,7 @@
       <DependentUpon>BankManager.feature</DependentUpon>
     </Compile>
     <Compile Include="KDTSteps\BasicKDTSteps.cs" />
+    <Compile Include="Framework\UI\Alias.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
