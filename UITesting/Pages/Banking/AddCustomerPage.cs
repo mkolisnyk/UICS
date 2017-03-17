@@ -26,7 +26,7 @@ namespace UITesting.Pages.Banking
 		public AddCustomerPage(IWebDriver driver) : base(driver)
 		{
 		}
-		public new virtual Page Navigate()
+		public override Page Navigate()
 		{
 			return this.buttonAddCustomer.ClickAndWaitFor<AddCustomerPage>();
 		}

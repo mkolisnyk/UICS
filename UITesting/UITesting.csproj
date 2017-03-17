@@ -26,28 +26,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.3.0.1\lib\net40\WebDriver.Support.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="appium-dotnet-driver">
       <HintPath>..\packages\Appium.WebDriver.3.0.0.2\lib\net45\appium-dotnet-driver.dll</HintPath>
     </Reference>
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver.3.3.0\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\packages\Selenium.Support.3.3.0\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,14 +79,11 @@
     <Compile Include="Framework\ODT\ODTTestStep.cs" />
     <Compile Include="Framework\ODT\ODTTestCase.cs" />
     <Compile Include="Framework\ODT\ODTTestSuite.cs" />
-    <Compile Include="Framework\Core\Context.cs" />
-    <Compile Include="ODTSteps\ODTBankingSteps.cs" />
-    <Compile Include="ODTTestBanking.cs" />
+    <Compile Include="Framework\UI\Alias.cs" />
+    <Compile Include="KDTSteps\BasicKDTSteps.cs" />
     <Compile Include="Features\BankManager.feature.cs">
       <DependentUpon>BankManager.feature</DependentUpon>
     </Compile>
-    <Compile Include="KDTSteps\BasicKDTSteps.cs" />
-    <Compile Include="Framework\UI\Alias.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -117,9 +114,7 @@
     <Folder Include="Pages\Android\" />
     <Folder Include="Pages\Banking\" />
     <Folder Include="Framework\ODT\" />
-    <Folder Include="ODTSteps\" />
     <Folder Include="Features\" />
-    <Folder Include="KDTSteps\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

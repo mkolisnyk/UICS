@@ -72,6 +72,24 @@ namespace UITesting.Features
   this.ScenarioSetup(scenarioInfo);
 #line 3
     testRunner.Given("the banking application has been started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 4
+    testRunner.And("I am on the \"Banking Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 5
+    testRunner.When("I click on the \"Banking Manager Login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 6
+    testRunner.Then("I should see the \"Banking Manager Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 7
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+    testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 9
+    testRunner.When("I go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+    testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
+    testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

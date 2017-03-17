@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using OpenQA.Selenium;
@@ -13,6 +14,18 @@ namespace UITesting.Framework.UI
 	{
 		private IWebDriver driver;
 
+		private static Dictionary<String, Page> currentPages = new Dictionary<String, Page>();
+		public static Page Current
+		{
+			get 
+			{
+				return currentPages[UITesting.Framework.Core.Driver.GetThreadName()];
+			}
+			set
+			{
+				currentPages[UITesting.Framework.Core.Driver.GetThreadName()] = value;
+			}
+		}
 		public IWebDriver Driver
 		{
 			get
@@ -29,8 +42,27 @@ namespace UITesting.Framework.UI
 			Type[] types = Assembly.GetExecutingAssembly().GetTypes();
 			Type pageType = types.Where<Type>(t => (typeof(Page).IsAssignableFrom(t)
 			                                        && t.GetCustomAttribute<AliasAttribute>() != null
-			                                        && t.GetCustomAttribute<AliasAttribute>().Name.Equals("name"))).First<Type>();
-			return null;//PageFactory.Init<pageType>();
+			                                        && t.GetCustomAttribute<AliasAttribute>().Name.Equals(name))).First<Type>();
+			return (Page) typeof(PageFactory).GetMethod("Init").MakeGenericMethod(new Type[] { pageType })
+									  .Invoke(null, new Object[] { });
+		}
+		public Control this[String name]
+		{
+			get
+			{
+				foreach (FieldInfo field in this.GetType().GetFields())
+				{
+					if (typeof(Control).IsAssignableFrom(field.FieldType))
+					{
+						AliasAttribute alias = field.GetCustomAttribute<AliasAttribute>();
+						if (alias != null && name.Equals(alias.Name))
+						{
+							return (Control)field.GetValue(this);
+						}
+					}
+				}
+				return null;
+			}
 		}
 		public virtual Page Navigate()
 		{
