@@ -48,12 +48,15 @@ namespace UITesting.Framework.UI.Controls
 				return this.Driver.FindElement(locator);
 			}
 		}
-		public String Text
+		public virtual String Text
 		{ 
 			get
 			{ 
 				Assert.True(this.Exists(), "Unable to find element: " + this.Locator);
 				return this.Element.Text;
+			}
+			set
+			{ 
 			}
 		}
 		public bool ExcludeFromSearch 

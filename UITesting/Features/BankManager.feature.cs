@@ -87,8 +87,28 @@ namespace UITesting.Features
 #line 10
     testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
-    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("the \"First Name\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
+    testRunner.And("the \"Last Name\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+    testRunner.And("the \"Post Code\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+    testRunner.And("the \"Submit\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+    testRunner.When("I enter \"Test\" text into the \"First Name\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+    testRunner.And("enter \"User\" text into the \"Last Name\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+    testRunner.And("enter \"WWW99\" text into the \"Post Code\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 18
+    testRunner.Then("I should see the \"First Name\" field contains the \"Test\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
+    testRunner.And("the \"Last Name\" field contains the \"User\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+    testRunner.And("the \"Post Code\" field contains the \"WWW99\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
     testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

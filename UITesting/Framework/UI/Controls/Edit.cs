@@ -7,7 +7,7 @@ namespace UITesting.Framework.UI.Controls
 {
 	public class Edit : Control
 	{
-		public new String Text
+		public override String Text
 		{ 
 			get
 			{
