@@ -86,42 +86,86 @@ namespace UITesting.Features
     testRunner.When("I go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
     testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[]
+                {
+                        "Field"});
+            table1.AddRow(new string[]
+                {
+                        "First Name"});
+            table1.AddRow(new string[]
+                {
+                        "Last Name"});
+            table1.AddRow(new string[]
+                {
+                        "Post Code"});
 #line 11
-    testRunner.And("the \"First Name\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
-    testRunner.And("the \"Last Name\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
-    testRunner.And("the \"Post Code\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
-    testRunner.And("the \"Submit\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
-    testRunner.When("I enter \"Test\" text into the \"First Name\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("the following fields are shown:", ((string)(null)), table1, "And ");
 #line 16
-    testRunner.And("enter \"User\" text into the \"Last Name\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("the \"Submit\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[]
+                {
+                        "Field",
+                        "Value"});
+            table2.AddRow(new string[]
+                {
+                        "First Name",
+                        "Test"});
+            table2.AddRow(new string[]
+                {
+                        "Last Name",
+                        "User"});
+            table2.AddRow(new string[]
+                {
+                        "Post Code",
+                        "WWW99"});
 #line 17
-    testRunner.And("enter \"WWW99\" text into the \"Post Code\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
-    testRunner.Then("I should see the \"First Name\" field contains the \"Test\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 19
-    testRunner.And("the \"Last Name\" field contains the \"User\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
-    testRunner.And("the \"Post Code\" field contains the \"WWW99\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
-    testRunner.When("I click on the \"Submit\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I populate current page with the following data:", ((string)(null)), table2, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[]
+                {
+                        "Field",
+                        "Value"});
+            table3.AddRow(new string[]
+                {
+                        "First Name",
+                        "Test"});
+            table3.AddRow(new string[]
+                {
+                        "Last Name",
+                        "User"});
+            table3.AddRow(new string[]
+                {
+                        "Post Code",
+                        "WWW99"});
 #line 22
-    testRunner.And("accept the alert message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
-    testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 24
-    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 25
-    testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
-    testRunner.And("the \"Test\" text is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Then("I should see the page contains the following data:", ((string)(null)), table3, "Then ");
 #line 27
-    testRunner.And("the \"User\" text is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I click on the \"Submit\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
-    testRunner.And("the \"WWW99\" text is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("accept the alert message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 29
+    testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 31
+    testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[]
+                {
+                        "Label"});
+            table4.AddRow(new string[]
+                {
+                        "Test"});
+            table4.AddRow(new string[]
+                {
+                        "User"});
+            table4.AddRow(new string[]
+                {
+                        "WWW99"});
+#line 32
+    testRunner.And("the following labels are shown:", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

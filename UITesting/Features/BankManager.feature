@@ -8,21 +8,29 @@
     Then I should see the "Customers" page
     When I go to the "Add Customer" page
     Then I should see the "Add Customer" page
-    And the "First Name" field is available
-    And the "Last Name" field is available
-    And the "Post Code" field is available
+    And the following fields are shown:
+      | Field      |
+      | First Name |
+      | Last Name  |
+      | Post Code  |
     And the "Submit" field is available
-    When I enter "Test" text into the "First Name" field
-    And enter "User" text into the "Last Name" field
-    And enter "WWW99" text into the "Post Code" field
-    Then I should see the "First Name" field contains the "Test" text
-    And the "Last Name" field contains the "User" text
-    And the "Post Code" field contains the "WWW99" text
+    When I populate current page with the following data:
+      | Field      | Value |
+      | First Name | Test  |
+      | Last Name  | User  |
+      | Post Code  | WWW99 |
+    Then I should see the page contains the following data:
+      | Field      | Value |
+      | First Name | Test  |
+      | Last Name  | User  |
+      | Post Code  | WWW99 |
     When I click on the "Submit" button
     And accept the alert message
     Then I should see the "Add Customer" page
     When I go to the "Customers" page
     Then I should see the "Customers" page
-    And the "Test" text is shown
-    And the "User" text is shown
-    And the "WWW99" text is shown
+    And the following labels are shown:
+      | Label |
+      | Test  |
+      | User  |
+      | WWW99 |
