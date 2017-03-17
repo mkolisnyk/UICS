@@ -58,7 +58,7 @@ namespace UITesting.KDTSteps
 		}
 
 	    [Then("^(?:I should see |)the \"(.*)\" field is available$")]
-		public Control verifyElementExists(String fieldName)
+		public Control VerifyElementExists(String fieldName)
 		{
 			Control control = Page.Current[fieldName];
 			Assert.NotNull(control, "Unable to find the '" + fieldName + "' element on current page.");
@@ -66,16 +66,16 @@ namespace UITesting.KDTSteps
 		}
 
 		[When("^(?:I |)enter \"(.*)\" text into the \"(.*)\" field$")]
-		public void enterText(String text, String fieldName)
+		public void EnterText(String text, String fieldName)
 		{
-			Edit control = (Edit) verifyElementExists(fieldName);
+			Edit control = (Edit) VerifyElementExists(fieldName);
 			control.Text = text;
 		}
 
 		[Then("^(?:I should see |)the \"(.*)\" field contains the \"(.*)\" text$")]
-		public void verifyFieldText(String fieldName, String text)
+		public void VerifyFieldText(String fieldName, String text)
 		{
-			Control control = (Control) verifyElementExists(fieldName);
+			Control control = (Control) VerifyElementExists(fieldName);
 			String actualText = control.Text;
 			Assert.True(
 				text.Equals(actualText) || actualText.Contains(text),
@@ -84,6 +84,20 @@ namespace UITesting.KDTSteps
                 text,
                 actualText
             ));
+		}
+
+		[When("^(?:I |)accept the alert message$")]
+		public void AcceptAlert()
+		{
+			Driver.Current().SwitchTo().Alert().Accept();
+		}
+
+		[Then("^(?:I should see |)the \"(.*)\" text is shown$")]
+		public void VerifyFieldText(String text)
+		{
+			Assert.True(
+				Page.Current.IsTextPresent(text),
+				"Unable to find text: '" + text + "'");
 		}
 	}
 }
