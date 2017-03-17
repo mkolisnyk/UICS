@@ -83,8 +83,10 @@ namespace UITesting.Features
 #line 8
     testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 9
-    testRunner.When("I go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("the \"Customer List\" table is not empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
+    testRunner.When("I go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
     testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[]
@@ -99,9 +101,9 @@ namespace UITesting.Features
             table1.AddRow(new string[]
                 {
                         "Post Code"});
-#line 11
+#line 12
     testRunner.And("the following fields are shown:", ((string)(null)), table1, "And ");
-#line 16
+#line 17
     testRunner.And("the \"Submit\" field is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[]
@@ -120,7 +122,7 @@ namespace UITesting.Features
                 {
                         "Post Code",
                         "WWW99"});
-#line 17
+#line 18
     testRunner.When("I populate current page with the following data:", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[]
@@ -139,17 +141,17 @@ namespace UITesting.Features
                 {
                         "Post Code",
                         "WWW99"});
-#line 22
+#line 23
     testRunner.Then("I should see the page contains the following data:", ((string)(null)), table3, "Then ");
-#line 27
-    testRunner.When("I click on the \"Submit\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
-    testRunner.And("accept the alert message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I click on the \"Submit\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
-    testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And("accept the alert message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
-    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 31
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 32
     testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[]
@@ -164,8 +166,23 @@ namespace UITesting.Features
             table4.AddRow(new string[]
                 {
                         "WWW99"});
-#line 32
+#line 33
     testRunner.And("the following labels are shown:", ((string)(null)), table4, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[]
+                {
+                        "First Name",
+                        "Last Name",
+                        "Post Code"});
+            table5.AddRow(new string[]
+                {
+                        "Test",
+                        "User",
+                        "WWW99"});
+#line 38
+   testRunner.And("the last row of the \"Customer List\" table contains the following data:", ((string)(null)), table5, "And ");
+#line 41
+    testRunner.When("I click on the last \"Delete Customer\" element of the \"Customer List\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
         }

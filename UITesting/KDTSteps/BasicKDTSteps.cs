@@ -139,5 +139,45 @@ namespace UITesting.KDTSteps
 				VerifyFieldText(data.Rows[i]["Field"], data.Rows[i]["Value"]);
 			}
 		}
+	    [Then("^(?:I should see |)the \"(.*)\" (?:list|table) is not empty$")]
+		public void verifyListEmptyState(String list)
+		{
+			TableView control = (TableView) VerifyElementExists(list);
+ 			Assert.True(control.IsNotEmpty(), "The '" + list + "' element is empty");
+		}
+
+		[Then("^(?:I should see |)the (first|last) (?:row|item) of the \"(.*)\" (?:list|table) contains the following data:$")]
+		public void verifyListRowData(String firstLast, String list, Table data)
+		{
+			int index = 0;
+			TableView control = (TableView)VerifyElementExists(list);
+			if (firstLast.Equals("last"))
+			{
+				index = control.ItemsCount - 1;
+			}
+			int count = data.RowCount;
+			for (int i = 0; i < count; i++)
+			{
+				foreach (String key in data.Rows[i].Keys)
+				{
+					String value = data.Rows[i][key];
+					Assert.AreEqual(value, control[key, index].Text,
+									String.Format("The {0} row element '{1}' has unexpected value", firstLast, key)
+								   );
+				}
+			}
+		}
+
+		[When("^(?:I |)(?:click|tap) on the (first|last) \"(.*)\" element of the \"(.*)\" (?:list|table)$")]
+		public void clickOnSubItem(String firstLast, String item, String list)
+		{
+	        int index = 0;
+			TableView control = (TableView) VerifyElementExists(list);
+	        if (firstLast.Equals("last")) 
+			{
+				index = control.ItemsCount - 1;
+			}
+			control[item, index].Click();
+		}
 	}
 }
