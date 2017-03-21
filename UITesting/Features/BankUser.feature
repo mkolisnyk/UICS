@@ -8,3 +8,7 @@
     And enter "100" text into the "Deposit Amount" field
     And click on the "Submit Deposit" button
     Then I should see the "Deposit Successful" text is shown
+    And the "Balance" field value is calculated using the following formula:
+		"""
+		Initial Balance + 100
+		"""

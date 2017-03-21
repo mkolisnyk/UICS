@@ -87,6 +87,9 @@ namespace UITesting.Features
 #line 10
     testRunner.Then("I should see the \"Deposit Successful\" text is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 11
+    testRunner.And("the \"Balance\" field value is calculated using the following formula:", "Initial Balance + 100", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             this.ScenarioCleanup();
         }
     }

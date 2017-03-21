@@ -217,5 +217,21 @@ namespace UITesting.KDTSteps
 		{
     	    ((HomePage) Page.Screen("Banking Home")).LoginAsCustomer(name);
 		}
+	    [Then("^(?:I should see |)the \"(.*?)\" field value is calculated using the following formula:$")]
+		public void FieldValueIsCalculatedByFormula(String field, String formula)
+		{
+			double precision = 0.0099;
+			double actualCount = Double.Parse(Page.Current[field].Text);
+			String expectedCountValue = formula;
+			foreach (String key in Context.Variables)
+			{
+				expectedCountValue = expectedCountValue.Replace(key, Context.Get(key).ToString());
+			}
+			Expression expression = new Expression(expectedCountValue);
+			double expectedCount = Double.Parse(expression.Evaluate().ToString());
+			Assert.AreEqual(expectedCount, actualCount, precision,
+			                "Wrong " + field + "! on page (" + actualCount
+                			+ ") vs calulated (" + expectedCount + ")");
+    }
 	}
 }
