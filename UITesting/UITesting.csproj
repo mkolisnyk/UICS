@@ -90,6 +90,12 @@
     <Compile Include="Framework\Core\Context.cs" />
     <Compile Include="ODTTestBanking.cs" />
     <Compile Include="ODTSteps\ODTBankingSteps.cs" />
+    <Compile Include="Features\BankUser.feature.cs">
+      <DependentUpon>BankUser.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Banking\CustomerCommonPage.cs" />
+    <Compile Include="Pages\Banking\CustomerDepositPage.cs" />
+    <Compile Include="Pages\Banking\CustomerLoginPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -108,6 +114,10 @@
     <None Include="Features\BankManager.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>BankManager.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\BankUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>BankUser.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
