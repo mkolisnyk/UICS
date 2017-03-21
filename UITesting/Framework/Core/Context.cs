@@ -39,5 +39,13 @@ namespace UITesting.Framework.Core
 			}
 			contextVariables.Add(threadName, new Dictionary<String, Object>());
 		}
+		public static Dictionary<String, Object>.KeyCollection Variables
+		{ 
+			get
+			{
+				String threadName = Driver.GetThreadName();
+				return contextVariables[threadName].Keys;
+			}
+		}
 	}
 }

@@ -4,7 +4,8 @@
     And I am on the "Banking Home" page
     When I click on the "Banking Manager Login" button
     Then I should see the "Banking Manager Home" page
-    When I go to the "Customers" page
+    When I note the "Customer List" table row count as "Initial Count"
+    And go to the "Add Customer" page
     Then I should see the "Customers" page
     And the "Customer List" table is not empty
     When I go to the "Add Customer" page
@@ -39,3 +40,4 @@
       | First Name | Last Name | Post Code |
       | Test       | User      | WWW99     |
     When I click on the last "Delete Customer" element of the "Customer List" table
+    Then I should see the "Customer List" table has "Initial Count" rows

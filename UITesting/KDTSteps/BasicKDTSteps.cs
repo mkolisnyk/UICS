@@ -19,6 +19,7 @@ namespace UITesting.KDTSteps
 		{
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Platform, Configuration.DriverPath, capabilities);
+			Context.ClearCurrent();
 		}
 		[After]
 		public void TearDown()
@@ -179,5 +180,27 @@ namespace UITesting.KDTSteps
 			}
 			control[item, index].Click();
 		}
+	    [When("^(?:I |)note the \"(.*)\" (?:table|list) (?:row|item) count as \"(.*)\"")]
+		public void NoteRowCountAs(String list, String varName)
+		{
+			TableView control = (TableView) VerifyElementExists(list);
+			Context.Put(varName, control.ItemsCount);
+		}
+
+		[Then("^(?:I should see |)the \"(.*)\" (?:table|list) has \"(.*)\" (?:items|rows)$")]
+		public void VerifyTableRowCount(String list, String countValue)
+		{
+			TableView control = (TableView) VerifyElementExists(list);
+
+			int actualCount = control.ItemsCount;
+			String expectedCountValue = countValue;
+	        foreach (String key in Context.Variables) 
+			{
+	            expectedCountValue = expectedCountValue.Replace(key, Context.Get(key).ToString());
+	        }
+			int expectedCount = Int32.Parse(expectedCountValue);
+			Assert.AreEqual(expectedCount, actualCount,
+			               "Unexpected row count for the '" + list + "' table");
+    	}
 	}
 }
