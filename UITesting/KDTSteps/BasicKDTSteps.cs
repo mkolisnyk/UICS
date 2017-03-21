@@ -1,4 +1,5 @@
 ﻿using System;
+using NCalc;
 using NUnit.Framework;
 using OpenQA.Selenium.Remote;
 using UITesting.Framework.Core;
@@ -192,14 +193,15 @@ namespace UITesting.KDTSteps
 		{
 			TableView control = (TableView) VerifyElementExists(list);
 
-			int actualCount = control.ItemsCount;
+			double actualCount = Double.Parse(control.ItemsCount.ToString());
 			String expectedCountValue = countValue;
 	        foreach (String key in Context.Variables) 
 			{
 	            expectedCountValue = expectedCountValue.Replace(key, Context.Get(key).ToString());
 	        }
-			int expectedCount = Int32.Parse(expectedCountValue);
-			Assert.AreEqual(expectedCount, actualCount,
+			Expression expression = new Expression(expectedCountValue);
+			double expectedCount = Double.Parse(expression.Evaluate().ToString());
+			Assert.AreEqual(expectedCount, actualCount, 0.0001,
 			               "Unexpected row count for the '" + list + "' table");
     	}
 	}

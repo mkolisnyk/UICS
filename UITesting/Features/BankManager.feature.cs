@@ -79,15 +79,15 @@ namespace UITesting.Features
 #line 6
     testRunner.Then("I should see the \"Banking Manager Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 7
-    testRunner.When("I note the \"Customer List\" table row count as \"Initial Count\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I go to the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
-    testRunner.And("go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
     testRunner.Then("I should see the \"Customers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 10
+#line 9
     testRunner.And("the \"Customer List\" table is not empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+    testRunner.When("I note the \"Customer List\" table row count as \"Initial Count\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
-    testRunner.When("I go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("go to the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
     testRunner.Then("I should see the \"Add Customer\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -170,6 +170,10 @@ namespace UITesting.Features
                         "WWW99"});
 #line 34
     testRunner.And("the following labels are shown:", ((string)(null)), table4, "And ");
+#line 39
+    testRunner.And("the \"Customer List\" table has \"Initial Count + 1\" rows", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 40
+    testRunner.And("the \"Customer List\" table has \"100 * (Initial Count + 1) / 100\" rows", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[]
                 {
@@ -181,11 +185,11 @@ namespace UITesting.Features
                         "Test",
                         "User",
                         "WWW99"});
-#line 39
+#line 41
    testRunner.And("the last row of the \"Customer List\" table contains the following data:", ((string)(null)), table5, "And ");
-#line 42
+#line 44
     testRunner.When("I click on the last \"Delete Customer\" element of the \"Customer List\" table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 43
+#line 45
     testRunner.Then("I should see the \"Customer List\" table has \"Initial Count\" rows", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -17,6 +17,11 @@ namespace UITesting.Framework.Core
 			if (contextVariables.ContainsKey(threadName))
 			{
 				dataMap = contextVariables[threadName];
+				contextVariables.Remove(threadName);
+			}
+			if (dataMap.ContainsKey(name))
+			{
+				dataMap.Remove(name);
 			}
 			dataMap.Add(name, value);
 			contextVariables.Add(threadName, dataMap);
