@@ -52,6 +52,12 @@
     <Reference Include="NCalc">
       <HintPath>..\packages\CoreCLR-NCalc.2.1.3\lib\net45\NCalc.dll</HintPath>
     </Reference>
+    <Reference Include="SpecRun.SpecFlowPlugin">
+      <HintPath>..\packages\SpecRun.SpecFlow.1.5.2\lib\net45\SpecRun.SpecFlowPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecRun">
+      <HintPath>..\packages\SpecRun.SpecFlow.1.5.2\lib\net45\TechTalk.SpecRun.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.cs" />
@@ -96,6 +102,7 @@
     <Compile Include="Pages\Banking\CustomerCommonPage.cs" />
     <Compile Include="Pages\Banking\CustomerDepositPage.cs" />
     <Compile Include="Pages\Banking\CustomerLoginPage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -119,6 +126,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>BankUser.feature.cs</LastGenOutput>
     </None>
+    <None Include="SpecRunTestProfile_2011_09.xsd" />
+    <None Include="SpecRunTestProfile.xsd" />
+    <None Include="runtests.cmd" />
+    <None Include="Default.srprofile" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Framework\" />
