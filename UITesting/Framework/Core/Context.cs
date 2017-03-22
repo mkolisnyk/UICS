@@ -17,6 +17,11 @@ namespace UITesting.Framework.Core
 			if (contextVariables.ContainsKey(threadName))
 			{
 				dataMap = contextVariables[threadName];
+				contextVariables.Remove(threadName);
+			}
+			if (dataMap.ContainsKey(name))
+			{
+				dataMap.Remove(name);
 			}
 			dataMap.Add(name, value);
 			contextVariables.Add(threadName, dataMap);
@@ -38,6 +43,14 @@ namespace UITesting.Framework.Core
 				contextVariables.Remove(threadName);
 			}
 			contextVariables.Add(threadName, new Dictionary<String, Object>());
+		}
+		public static Dictionary<String, Object>.KeyCollection Variables
+		{ 
+			get
+			{
+				String threadName = Driver.GetThreadName();
+				return contextVariables[threadName].Keys;
+			}
 		}
 	}
 }

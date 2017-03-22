@@ -1,9 +1,11 @@
 ﻿using System;
+using NCalc;
 using NUnit.Framework;
 using OpenQA.Selenium.Remote;
 using UITesting.Framework.Core;
 using UITesting.Framework.UI;
 using UITesting.Framework.UI.Controls;
+using UITesting.Pages.Banking;
 using TechTalk.SpecFlow;
 
 namespace UITesting.KDTSteps
@@ -19,6 +21,7 @@ namespace UITesting.KDTSteps
 		{
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			Driver.Add(Configuration.Platform, Configuration.DriverPath, capabilities);
+			Context.ClearCurrent();
 		}
 		[After]
 		public void TearDown()
@@ -179,5 +182,56 @@ namespace UITesting.KDTSteps
 			}
 			control[item, index].Click();
 		}
+	    [When("^(?:I |)note the \"(.*)\" (?:table|list) (?:row|item) count as \"(.*)\"")]
+		public void NoteRowCountAs(String list, String varName)
+		{
+			TableView control = (TableView) VerifyElementExists(list);
+			Context.Put(varName, control.ItemsCount);
+		}
+
+		[When("^(?:I |)note the \"(.*)\" field text as \"(.*)\"")]
+		public void NoteControlTextAs(String list, String varName)
+		{
+			Control control = VerifyElementExists(list);
+			Context.Put(varName, control.Text);
+		}
+		[Then("^(?:I should see |)the \"(.*)\" (?:table|list) has \"(.*)\" (?:items|rows)$")]
+		public void VerifyTableRowCount(String list, String countValue)
+		{
+			TableView control = (TableView) VerifyElementExists(list);
+
+			double actualCount = Double.Parse(control.ItemsCount.ToString());
+			String expectedCountValue = countValue;
+	        foreach (String key in Context.Variables) 
+			{
+	            expectedCountValue = expectedCountValue.Replace(key, Context.Get(key).ToString());
+	        }
+			Expression expression = new Expression(expectedCountValue);
+			double expectedCount = Double.Parse(expression.Evaluate().ToString());
+			Assert.AreEqual(expectedCount, actualCount, 0.0001,
+			               "Unexpected row count for the '" + list + "' table");
+    	}
+
+	    [Given("^I am logged as the \"(.*)\" customer$")]
+		public void LoginAsCustomer(String name)
+		{
+    	    ((HomePage) Page.Screen("Banking Home")).LoginAsCustomer(name);
+		}
+	    [Then("^(?:I should see |)the \"(.*?)\" field value is calculated using the following formula:$")]
+		public void FieldValueIsCalculatedByFormula(String field, String formula)
+		{
+			double precision = 0.0099;
+			double actualCount = Double.Parse(Page.Current[field].Text);
+			String expectedCountValue = formula;
+			foreach (String key in Context.Variables)
+			{
+				expectedCountValue = expectedCountValue.Replace(key, Context.Get(key).ToString());
+			}
+			Expression expression = new Expression(expectedCountValue);
+			double expectedCount = Double.Parse(expression.Evaluate().ToString());
+			Assert.AreEqual(expectedCount, actualCount, precision,
+			                "Wrong " + field + "! on page (" + actualCount
+                			+ ") vs calulated (" + expectedCount + ")");
+    }
 	}
 }
